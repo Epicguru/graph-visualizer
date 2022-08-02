@@ -1,6 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine.Playables;
 
+public interface ICustomNodeRenderer
+{
+    void DrawNode(in Rect nodeRect, Node node, bool selected);
+}
+
 // Bridge between runtime and editor code: the graph created in runtime code can call GraphVisualizerClient.Show(...)
 // and the EditorWindow will register itself with the client to display any available graph.
 public class GraphVisualizerClient
