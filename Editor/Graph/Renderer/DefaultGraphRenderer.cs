@@ -453,6 +453,8 @@ namespace GraphVisualizer
         {
             return new Vector2((v.x + offset.x) * scaleFactor.x, (v.y + offset.y) * scaleFactor.y);
         }
+        
+        private static readonly MethodInfo getBehaviourMethod = typeof(UnityEngine.Playables.PlayableHandle).GetMethod("GetScriptInstance", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
 
         // Draw a node an return true if it has been clicked
         private void DrawNode(Rect nodeRect, Node node, bool selected)
@@ -469,7 +471,7 @@ namespace GraphVisualizer
                 EditorGUI.DrawRect(new Rect(nodeRect.xMin, nodeRect.yMax - height, nodeRect.width * progress, height), Color.white);
             }
             
-            if (node.content is UnityEngine.Playables.IPlayable playable && playable.GetHandle().GetObject<object>() is ICustomNodeRenderer renderer)
+            if (node.content is UnityEngine.Playables.IPlayable playable && getBehaviourMethod.Invoke(playable.GetHandle(), new object[0]) is ICustomNodeRenderer renderer)
             {
                 renderer.DrawNode(nodeRect, selected);
             }
