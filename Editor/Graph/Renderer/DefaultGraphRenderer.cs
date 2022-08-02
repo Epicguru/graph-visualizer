@@ -469,7 +469,7 @@ namespace GraphVisualizer
                 EditorGUI.DrawRect(new Rect(nodeRect.xMin, nodeRect.yMax - height, nodeRect.width * progress, height), Color.white);
             }
             
-            if (node.content is IPlayable playable && playable.GetHandle().GetObject<object>() is ICustomNodeRenderer renderer)
+            if (node.content is UnityEngine.Playables.IPlayable playable && playable.GetHandle().GetObject<object>() is ICustomNodeRenderer renderer)
             {
                 renderer.DrawNode(nodeRect, selected);
             }
