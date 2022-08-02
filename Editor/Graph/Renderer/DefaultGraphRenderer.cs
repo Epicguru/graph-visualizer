@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 
 namespace GraphVisualizer
-{
+{    
     public class DefaultGraphRenderer : IGraphRenderer
     {
         protected event Action<Node> nodeClicked;
@@ -467,6 +467,11 @@ namespace GraphVisualizer
             {
                 float height = 10f;
                 EditorGUI.DrawRect(new Rect(nodeRect.xMin, nodeRect.yMax - height, nodeRect.width * progress, height), Color.white);
+            }
+            
+            if (node.content is ICustomNodeRenderer renderer)
+            {
+                renderer.DrawNode(nodeRect, node, selected);
             }
         }
 
