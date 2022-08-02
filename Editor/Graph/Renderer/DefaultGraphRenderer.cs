@@ -471,7 +471,7 @@ namespace GraphVisualizer
             
             if (node.content is ICustomNodeRenderer renderer)
             {
-                renderer.DrawNode(nodeRect, node, selected);
+                renderer.DrawNode(nodeRect, selected);
             }
         }
 
