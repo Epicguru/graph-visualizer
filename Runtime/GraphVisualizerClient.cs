@@ -3,7 +3,7 @@ using UnityEngine.Playables;
 
 public interface ICustomNodeRenderer
 {
-    void DrawNode(in Rect nodeRect, Node node, bool selected);
+    void DrawNode(in UnityEngine.Rect nodeRect, bool selected);
 }
 
 // Bridge between runtime and editor code: the graph created in runtime code can call GraphVisualizerClient.Show(...)
